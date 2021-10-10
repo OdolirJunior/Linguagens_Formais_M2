@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Linguagens_Form_m2" />
+        <module name="Linguagens_Formais_M2" />
       </profile>
     </annotationProcessing>
   </component>
