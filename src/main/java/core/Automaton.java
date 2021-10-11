@@ -110,32 +110,34 @@ public class Automaton {
     public void generic(String sentence) {
             automaton();
             String input = sentence + " ";
-            Integer state = 0;
-            String output = "";
-            Integer posicao=0;
+            try {
 
-            for(int i=0; i< sentence.length(); i++) {
-                while (input.length() > posicao) {
-                    System.out.println(input.charAt(posicao));
-                    if(input.charAt(posicao) == ' ') {
-                        posicao++;
-                    }else{
+                for (int i = 0; i < sentence.length(); i++) {
+                    Integer state = 0;
+                    String output = "";
+                    Integer posicao = 0;
+                    while (input.length() >= posicao) {
                         state = states.get(state).getTransition(input.charAt(posicao));
                         if (state == null) {
                             System.out.println("ERRO: símbolo(s) inválido(s)");
-                         } else if (state == 10) {
+                            state = 0;
+                        } else if (state == 10) {
                             System.out.println("ERRO: sentença inválida:");
                         } else if (state == 11) {
                             System.out.println("operador aritmético" + input.charAt(posicao));
-                            input = input.substring(posicao);
-                        }else if (states.get(state).getAccept()) {
+                            input = input.substring(posicao+1);
+                            break;
+                        } else if (states.get(state).getAccept()) {
                             output = output + input.charAt(posicao);
                             System.out.println("sentença válida");
                             //PrincipalScreenController.getInstance().appendMessage(Messages.OK, "teste 123");
                         }
+                        posicao++;
+
+                    }
                 }
-                    posicao++;
-                }
+            }catch (Exception err){
+
             }
 
     }
