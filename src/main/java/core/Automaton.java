@@ -1,5 +1,6 @@
 package core;
 
+import front.controller.PrincipalScreenController;
 import model.State;
 
 import java.util.HashMap;
@@ -7,7 +8,6 @@ import java.util.HashMap;
 public class Automaton {
 
     private HashMap<Integer, State> states;
-
 
     public void automaton(){
         states = new HashMap<>();
@@ -30,6 +30,6 @@ public class Automaton {
     }
 
     public void generic(){
-
+        PrincipalScreenController.getInstance().appendMessage(0,"tester");
     }
 }
