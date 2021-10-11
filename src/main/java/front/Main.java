@@ -12,8 +12,8 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/teste.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 450, 450);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/PrincipalScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
         stage.setTitle("Reconhecedor de Linguagem Regular");
         stage.setScene(scene);
         stage.show();
