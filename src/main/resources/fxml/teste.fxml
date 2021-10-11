@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="231.0" prefWidth="462.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane prefHeight="200" prefWidth="200">
+      <ScrollPane layoutX="8.0" layoutY="22.0" minViewportWidth="10.0" prefHeight="136.0" prefWidth="431.0">
+         <content>
+            <TextArea prefHeight="175.0" prefWidth="506.0" />
+         </content>
+      </ScrollPane>
+    </AnchorPane>
+   <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+      <children>
+         <Button mnemonicParsing="false" text="analisar" />
+         <Button mnemonicParsing="false" text="limpar">
+            <HBox.margin>
+               <Insets right="5.0" />
+            </HBox.margin>
+         </Button>
+      </children>
+   </HBox>
+</VBox>

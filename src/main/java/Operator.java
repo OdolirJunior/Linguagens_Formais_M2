@@ -1,5 +1,3 @@
-package lf;
-
 public enum Operator {
     ADD("+"),
     SUB("-"),

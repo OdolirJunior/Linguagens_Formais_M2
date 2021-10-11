@@ -1,5 +1,3 @@
-package lf;
-
 public enum Error {
     OK("sentença válida: "),
     OPERATOR("operador aritmético: "),

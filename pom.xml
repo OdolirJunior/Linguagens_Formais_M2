@@ -67,7 +67,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.5</version>
                 <configuration>
-                    <mainClass>lf.Launcher</mainClass>
+                    <mainClass>front.Launcher</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -87,7 +87,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        lf.Launcher
+                                        front.Launcher
                                     </mainClass>
                                 </manifest>
                             </archive>
