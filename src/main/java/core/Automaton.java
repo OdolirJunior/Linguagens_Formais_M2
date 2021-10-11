@@ -20,6 +20,11 @@ public class Automaton {
         q2.setTransitions('c', 2);
         q2.setTransitions('d', 9);
         q2.setTransitions('e', 10);
+        q2.setTransitions('+', 11);
+        q2.setTransitions('-', 11);
+        q2.setTransitions('*', 11);
+        q2.setTransitions('/', 11);
+
         states.put(0, q2);
 
         State q1 = new State(true);
@@ -94,34 +99,49 @@ public class Automaton {
         q9.setTransitions('d', 10);
         q9.setTransitions('e', 1);
         states.put(9, q9);
+
+        State q10 = new State(true);
+        states.put(10, q10);
+        State q11 = new State(true);
+        states.put(11, q11);
     }
 
 
     public void generic(String sentence) {
-        try {
             automaton();
             String input = sentence + " ";
             Integer state = 0;
-            Integer position = 0;
             String output = "";
-            while (!Character.isWhitespace(input.charAt(position))) {
-                state = states.get(state).getTransition(input.charAt(position));
-                if(input.charAt(position) == '+') {
-                    System.out.println("operador aritmético +");
-                }else if (state == null) {
-                    System.out.println("ERRO: símbolo(s) inválido(s)");
-                }else if(state == 10){
-                    System.out.println("ERRO: sentença inválida:");
-                }else if (states.get(state).getAccept()) {
-                    output = output.concat(String.valueOf(input.charAt(position)));
-                    System.out.println("sentença válida");
-                    //PrincipalScreenController.getInstance().appendMessage(Messages.OK, "teste 123");
+            Integer posicao=0;
+            for(int i=0; i<=sentence.length(); i++) {
+                while (input.length() >= posicao) {
+                    if (input.charAt(posicao) != ' ') {
+                        state = states.get(state).getTransition(input.charAt(posicao));
+                        if (state == null) {
+                            System.out.println("ERRO: símbolo(s) inválido(s)");
+                            posicao++;
+                        } else if (state == 10) {
+                            System.out.println("ERRO: sentença inválida:");
+                            posicao++;
+                        } else if (state == 11) {
+                            System.out.println("operador aritmético" + input.charAt(posicao));
+                            input = input.substring(posicao+1);
+                            posicao=0;
+                        } else if (states.get(state).getAccept()) {
+                            output = output + input.charAt(posicao);
+                            System.out.println("sentença válida");
+                            posicao++;
+                            //PrincipalScreenController.getInstance().appendMessage(Messages.OK, "teste 123");
+                        }
+                    } else {
+                        output = "";
+                        input = input.substring(posicao+1);
+                        posicao=0;
+                    }
+
                 }
-                position++;
             }
-        }catch (Exception err){
-            System.out.println(err);
-        }
+
     }
 
 }
