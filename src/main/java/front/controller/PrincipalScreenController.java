@@ -35,6 +35,7 @@ public class PrincipalScreenController {
         System.out.println(enter.getText());
         automaton.generic(enter.getText());
         out.appendText("\n"+ enter.getText());
+
     }
 
     public void appendMessage(Messages messages, String expression){

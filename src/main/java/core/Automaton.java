@@ -117,24 +117,31 @@ public class Automaton {
                     String output = "";
                     Integer posicao = 0;
                     while (input.length() >= posicao) {
-                        state = states.get(state).getTransition(input.charAt(posicao));
-                        if (state == null) {
-                            System.out.println("ERRO: símbolo(s) inválido(s)");
-                            state = 0;
-                        } else if (state == 10) {
-                            System.out.println("ERRO: sentença inválida:");
-                        } else if (state == 11) {
-                            System.out.println("operador aritmético" + input.charAt(posicao));
-                            input = input.substring(posicao+1);
-                            break;
-                        } else if (states.get(state).getAccept()) {
-                            output = output + input.charAt(posicao);
-                            System.out.println("sentença válida");
-                            //PrincipalScreenController.getInstance().appendMessage(Messages.OK, "teste 123");
+                        if(input.charAt(posicao) != ' ') {
+                            state = states.get(state).getTransition(input.charAt(posicao));
+                            if (state == null) {
+                                PrincipalScreenController.getInstance().appendMessage(Messages.SYMBOL_INVALID, String.valueOf(input.charAt(posicao)));
+                                System.out.println("ERRO: símbolo(s) inválido(s)");
+                                state = 0;
+                            } else if (state == 10) {
+                                PrincipalScreenController.getInstance().appendMessage(Messages.SENTENCE_INVALID, String.valueOf(input.charAt(posicao)));
+                                System.out.println("ERRO: sentença inválida:");
+                            } else if (state == 11) {
+                                PrincipalScreenController.getInstance().appendMessage(Messages.OPERATOR, String.valueOf(input.charAt(posicao)));
+                                System.out.println("operador aritmético" + input.charAt(posicao));
+                                input = input.substring(posicao + 1);
+                                break;
+                            } else if (states.get(state).getAccept()) {
+                                output = output + input.charAt(posicao);
+                                System.out.println("sentença válida");
+                                PrincipalScreenController.getInstance().appendMessage(Messages.OK, String.valueOf(input.charAt(posicao)));
+                            }
+
                         }
                         posicao++;
 
                     }
+
                 }
             }catch (Exception err){
 
@@ -143,15 +150,3 @@ public class Automaton {
     }
 
 }
-
-//if (input.charAt(posicao) != ' ') {
-//        if (state == null) {
-//        System.out.println("ERRO: símbolo(s) inválido(s)");
-//        posicao++;
-//
-
-//        } else {
-//        output = "";
-//        input = input.substring(posicao+1);
-//        posicao=0;
-//        }
