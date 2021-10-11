@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -19,8 +20,22 @@
    </ScrollPane>
    <HBox alignment="TOP_RIGHT" prefHeight="26.0" prefWidth="252.0" spacing="5.0">
       <children>
-         <Button mnemonicParsing="false" onMouseClicked="#onClickAnalyze" text="Analisar" />
-         <Button mnemonicParsing="false" onMouseClicked="#onClickClear" text="Limpar" />
+         <Button mnemonicParsing="false" onMouseClicked="#onClickAnalyze" text="Analisar">
+            <graphic>
+               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../images/correto.png" />
+                  </image>
+               </ImageView>
+            </graphic></Button>
+         <Button mnemonicParsing="false" onMouseClicked="#onClickClear" text="Limpar">
+            <graphic>
+               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../images/borracha.png" />
+                  </image>
+               </ImageView>
+            </graphic></Button>
       </children>
       <VBox.margin>
          <Insets right="12.0" />
