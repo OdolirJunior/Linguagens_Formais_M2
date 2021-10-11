@@ -33,7 +33,7 @@ public class PrincipalScreenController  {
 //        for (int i = 0; i < 4; i++) {
 //            appendMessage(i, "teste " + i);
 //        }
-//        out.appendText("\n"+ enter.getText());
+        out.appendText("\n"+ enter.getText());
     }
 
     public void appendMessage(int messagePosition, String expression){
