@@ -113,10 +113,12 @@ public class Automaton {
             Integer state = 0;
             String output = "";
             Integer posicao=0;
+
             for(int i=0; i<=sentence.length(); i++) {
+                state = states.get(state).getTransition(input.charAt(posicao));
                 while (input.length() >= posicao) {
+                    state = states.get(state).getTransition(input.charAt(posicao));
                     if (input.charAt(posicao) != ' ') {
-                        state = states.get(state).getTransition(input.charAt(posicao));
                         if (state == null) {
                             System.out.println("ERRO: símbolo(s) inválido(s)");
                             posicao++;
