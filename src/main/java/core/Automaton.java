@@ -115,7 +115,6 @@ public class Automaton {
             Integer posicao=0;
 
             for(int i=0; i<=sentence.length(); i++) {
-                state = states.get(state).getTransition(input.charAt(posicao));
                 while (input.length() >= posicao) {
                     state = states.get(state).getTransition(input.charAt(posicao));
                     if (input.charAt(posicao) != ' ') {
